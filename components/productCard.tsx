@@ -10,13 +10,15 @@ type ProductCardProps = {
   newTag?: boolean, offerTag?: boolean
 }
 
+export const starsElements = (starScore : number) => {
+  const starsArray = [];
+  for (let index = 0; index < starScore; index++) starsArray.push(<div key={index} className="mr-2"><Image width={14} height={14} src={require('public/home/icon/star.png')} /></div>)
+  for(let index = starScore; index < 5; index++) starsArray.push(<div key={index} className="mr-2"><Image width={14} height={14} src={require('public/home/icon/star-disabled.png')} /></div>)
+  return starsArray
+}
+
 const ProductCard = ( {big, image, description, stars = 0, price, ...props} : ProductCardProps) => {
-  const starsElements = () => {
-    const starsArray = [];
-    for (let index = 0; index < stars; index++) starsArray.push(<div key={index} className="mr-2"><Image width={14} height={14} src={require('public/home/icon/star.png')} /></div>)
-    for(let index = stars; index < 5; index++) starsArray.push(<div key={index} className="mr-2"><Image width={14} height={14} src={require('public/home/icon/star-disabled.png')} /></div>)
-    return starsArray
-  }
+  
   if(big){
     return(
       <div className="relative w-77 border border-gray-500 rounded mr-4 flex-none">
@@ -24,7 +26,7 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
         <div className="px-2 py-2" >
           <p className="tracking-wider mb-2" >{description}</p>
           <div className="flex mb-4">
-            {starsElements()}
+            {starsElements(stars)}
             <p className="text-terciary-p-color" >(20)</p>
           </div>
           { props.offerPrice ? 

@@ -13,7 +13,7 @@ export default function Slideshow( props :{
 
   return(
     <div className={"w-full " + props.className} >
-      <div className="w-full mb-4 flex justify-center" >
+      <div className="w-full mb-4 rounded-lg flex justify-center" >
         <Image src={props.imageSrc} width={632} height={424} />
       </div>
       <div className="w-full flex justify-center">
