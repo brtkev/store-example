@@ -8,6 +8,7 @@ export default function CardTwoTextColumns(props: {
   paragraph1: string;
   paragraph2: string;
   textOrder: string;
+  imagenOrder?: string;
 }) {
   return (
     <>
