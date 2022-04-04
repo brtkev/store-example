@@ -16,24 +16,28 @@ const Item: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navegation />
-      <Card />
-      <ItemInformationCard
-        information={[
-          {title : 'DESCRIPCION', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
-          'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
-          'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
-          {title : 'SOBRE LA TIENDA', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
-          'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
-          'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
-          {title : 'VALORACIONES', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
-          'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
-          'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
-          {title : 'ENVÍO Y ENTREGA', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
-          'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
-          'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
-        ]}
-       />
-      <Carrousell defaultItems className='px-4 mb-16 lg:px-20' />
+      <div className='flex flex-col items-center w-full px-4 lg:px-20'>
+        <Card />
+        <ItemInformationCard
+          information={[
+            {title : 'DESCRIPCION', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
+            'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
+            'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
+            {title : 'SOBRE LA TIENDA', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
+            'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
+            'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
+            {title : 'VALORACIONES', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
+            'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
+            'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
+            {title : 'ENVÍO Y ENTREGA', p: ['Cubilia vestibulum interdum nisl a parturient a auctor vestibulum taciti vel bibendum tempor adipiscing suspendisse posuere libero penatibus lorem at interdum tristique iaculis redosan condimentum a ac rutrum mollis consectetur. Aenean nascetur vehicula egestas a adipiscing a est egestas suspendisse parturient diam adipiscing mattis elementum velit pulvinar suscipit sagittis facilisis facilisi tortor morbi at aliquam.',
+            'Netus nisi volutpat donec condimentum nunc eu sem odio condimentum hendrerit nisl mollis scelerisque ad vitae a eu.',
+            'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
+          ]}
+        />
+        <div className='overflow-hidden max-w-[1400px]'>
+          <Carrousell defaultItems className='mb-16 self-start' />
+        </div>
+      </div>
       <Footer />
       
     </div>
@@ -47,8 +51,8 @@ const ItemInformationCard = (props :{
 }) => {
   const [currentDescriptionActive, setCurrentDescriptionActive] = useState(0)
   return(
-    <>
-      <div className='px-4 mb-16 lg:hidden' >
+    <div className="mb-16 flex w-full justify-center">
+      <div className='lg:hidden w-full ' >
         {props.information?.map( (informationItem, i) => {
           const [isActive, setIsActive] = useState(false);
           const toggleActive = () => setIsActive(prev => !prev);
@@ -68,8 +72,8 @@ const ItemInformationCard = (props :{
           )
         })}
       </div>
-      <div className='hidden lg:flex flex-col  px-20 mb-10' >
-        <div className='flex border-t border-input-border-color h-7 w-full mb-8' >
+      <div className='hidden lg:flex flex-col w-full border-t border-b border-input-border-color pb-12 items-center max-w-[1400px]' >
+        <div className='flex h-7 w-full mb-8 ' >
         {props.information?.map((informationItem, i) => {
             const className = `cursor-pointer mr-4 text-semibold ${i === currentDescriptionActive ? 'text-title-color border-t-2 border-primary' : 'text-terciary-p-color'}`
             const setCurrent = () => setCurrentDescriptionActive(i);
@@ -78,18 +82,18 @@ const ItemInformationCard = (props :{
             )
           })}
         </div>
-        <div className='border-b border-input-border-color pb-12'>
+        <div className=''>
           <h1 className='text-3xl text-bold text-title-color mb-7'>{props.information?.at(currentDescriptionActive)?.title}</h1>
           { props.information?.at(currentDescriptionActive)?.p.map( p => <p className='text-p-color mb-7 ' >{p}</p>) }
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
 const Card = () => {
   return(
-    <div className='px-4 lg:px-20 lg:flex lg:py-20' >
+    <div className='lg:flex lg:py-20 max-w-[1400px] w-full' >
       <Slideshow 
         className='pt-8 pb-6 lg:hidden'
         imageSrc={require('public/producto-individual/producto-1.png')} />
