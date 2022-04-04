@@ -69,10 +69,23 @@ export default ProductCard;
 
 interface CarrousellProps extends React.HTMLAttributes<HTMLDivElement>{
   title? : string;
-  items? : React.ReactNode
+  items? : React.ReactNode;
+  defaultItems?: boolean;
+}
+const products = () => {
+  const products = [];
+  for(let i = 0; i < 10; i++){
+    products.push(<ProductCard key={i} image={require('public/home/product.png')} 
+    description="Blusa Con Puño Recogido" stars={4} price="$49.00"  />)
+  }
+  return products;
 }
 
-export const Carrousell = ({title, items,...props} : CarrousellProps) => {
+export const Carrousell = ({title, items, defaultItems, ...props} : CarrousellProps) => {
+  if(defaultItems){
+    title = 'Productos en tendencia';
+    items = products();    
+  }
   return(
     <div {...props} >
       {title && <h2 className="text-title-color text-3xl text-bold text-title-font mb-10">{title}</h2>}
