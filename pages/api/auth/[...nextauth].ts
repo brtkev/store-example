@@ -1,7 +1,6 @@
 import NextAuth from "next-auth"
 import { getToken, encode} from "next-auth/jwt";
 import {JWTEncodeParams} from "next-auth/jwt/types"
-// import GithubProvider from "next-auth/providers/github"
 import Auth0Provider from 'next-auth/providers/auth0';
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
@@ -38,23 +37,25 @@ export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID || '',
-      clientSecret: process.env.AUTH0_CLIENT_SECRET ||'',
-      issuer: process.env.AUTH0_ISSUER ||''
+      clientId: process.env.AUTH0_ID || '',
+      clientSecret: process.env.AUTH0_SECRET ||'',
+      issuer: process.env.AUTH0_ISSUER ||'',
+
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-      wellKnown: "https:aliolam.us.auth0.com/.well-known/openid-configuration"
+      clientId: process.env.GOOGLE_ID || '',
+      clientSecret: process.env.GOOGLE_SECRET || '',
+      // wellKnown: "https:aliolam.us.auth0.com/.well-known/openid-configuration"
     }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID || '',
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET ||'',
-    })
+    // FacebookProvider({
+    //   clientId: process.env.FACEBOOK_CLIENT_ID || '',
+    //   clientSecret: process.env.FACEBOOK_CLIENT_SECRET ||'',
+    // })
     // ...add more providers here
   ],
   callbacks: {
     async jwt(props){
+      console.log(props)
       const { token, user, account, profile, isNewUser} = props
       if(account?.access_token) 
         token.access_token = account?.access_token;

@@ -10,7 +10,7 @@ import fbLogo from '../../public/facebookLogo.svg';
 
 const SocialsButtons : FC = () => 
 <>
-  <LoginButton onClick={()=> signIn("google")} className='bg-white border-primary text-p-color hover:bg-primary hover:border-primary hover:text-white mb-4' >
+  <LoginButton onClick={() => signIn()} className='bg-white border-primary text-p-color hover:bg-primary hover:border-primary hover:text-white mb-4' >
     <div className='flex items-center justify-center' >
       <Image src={googleLogo} alt="google logo"  ></Image>
       <p  className='mx-2' >CONTINUAR CON GOOGLE</p>

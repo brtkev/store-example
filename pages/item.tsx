@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navegation from 'components/navegation'
 import Footer from 'components/footer'
 import Slideshow from 'components/slideshow'
-import ProductCard, { Carrousell, starsElements } from 'components/productCard'
+import  { Carrousell, starsElements } from 'components/productCard'
 import Image from 'next/image'
 import Button from 'components/buttons/button'
 import { useState } from 'react'
@@ -34,7 +34,7 @@ const Item: NextPage = () => {
             'Etiam dictumst congue a non class risus sed a. Diam adipiscing a condimentum in a nisl a maecenas libero pharetra tincidunt phasellus justo molestie bibendum. Vestibulum penatibus vestibulum lobortis vehicula euismod a platea taciti a eget in nec cum eget curabitur justo id enim mi velit at cum. Eu amet ut elit a sociis himenaeos eros nunc at pharetra magna suscipit.']},
           ]}
         />
-        <div className='overflow-hidden max-w-[1400px]'>
+        <div className='overflow-hidden self-start lg:self-center max-w-[1400px]'>
           <Carrousell defaultItems className='mb-16 self-start' />
         </div>
       </div>
@@ -159,8 +159,12 @@ const Card = () => {
         <p className='mb-4'>Categorias: Accesorios, Relojes</p>
         <div className='flex mb-10'>
           <p className='mr-2'>Compartir:</p>
-          <Image className='mr-2' src={require('public/icons/facebook-black.png')} width={24} height={24}  />
-          <Image src={require('public/icons/instagram-black.png')} width={24} height={24}  />
+          <div className='mr-4'>
+            <Image src={require('public/icons/facebook-black.png')} width={24} height={24}  />
+          </div>
+          <div>
+            <Image src={require('public/icons/instagram-black.png')} width={24} height={24}  />
+          </div>
         </div>
       </div>
     </div>

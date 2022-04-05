@@ -10,7 +10,7 @@ export default function Mobile(){
         <Image className='cursor-pointer' width={135} height={40} src={require('public/logo.png')} />
       </Link>
       <div className="flex">
-        <div className="mr-4 h-7 w-7" >
+        <div className="mr-4 h-7 w-7 flex justify-center items-center cursor-pointer" >
           <Image width={24} height={24} src={require('public/icons/search.png')} />
         </div>
         <Profile />
