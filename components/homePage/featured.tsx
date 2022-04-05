@@ -10,7 +10,7 @@ const storesImage = [
 ];
 
 const Stores = storesImage.map((img, i) => {
-  let className = `rounded-full cursor-pointer lg:w-32 lg:h-32 w-20 h-20 `;
+  let className = `rounded-full cursor-pointer lg:w-32 lg:h-32 md:w-28 md:h-28 w-20 h-20 `;
   className += i > 3 ? ' lg:block hidden' : 'relative'
   return(
     <div key={i} className={className}>
