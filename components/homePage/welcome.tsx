@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Welcome(){
   return(
-    <div className="relative flex flex-col-reverse md:flex-row md:justify-center md:items-center md:px-20 px-4 md:h-137" >
+    <div className=" w-full relative flex flex-col-reverse md:flex-row md:justify-center md:items-center md:px-20 px-4 md:h-137" >
       <div className="w-full md:flex-initial md:w-158 pt-7 pb-20 md:pt-0 md:pb-0" >
         <h1 className="text-tile-color text-5xl mb-6" >
         Tu Eco-Tienda online en AliOlam

@@ -8,7 +8,7 @@ const classes = {
 
 export default function Services(){
   return(
-    <div className="relative flex w-full items-center flex-wrap lg:px-20 px-4" >
+    <div className=" w-full relative flex w-full items-center flex-wrap lg:px-20 px-4" >
       <div className={classes.card} >
         <div className={classes.iconContainer} ><Image height={32} width={32} src={require('public/home/icon/refresh.png')} /></div>
         Economía Circular
