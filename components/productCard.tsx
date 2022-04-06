@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import React from 'react';
 
-type ProductCardProps = {
+export type ProductCardProps = {
   image: any,
   description: string,
   big? : boolean,
   stars: 0 | 1 | 2 | 3 | 4 | 5,
-  price: string, offerPrice?: string;
-  newTag?: boolean, offerTag?: boolean
+  price: string, offerPrice?: string,
+  newTag?: boolean, offerTag?: boolean, key?:any,
 }
 
 export const starsElements = (starScore : number) => {
@@ -21,7 +21,7 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
   
   if(big){
     return(
-      <div className="relative w-77 border border-gray-500 rounded mr-4 flex-none">
+      <div key={props.key} className="relative w-77 border border-gray-500 rounded flex-none">
         {image && <Image width={308} height={232} src={image} />}
         <div className="px-2 py-2" >
           <p className="tracking-wider mb-2" >{description}</p>
@@ -43,12 +43,12 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
     )
   }
   return(
-    <div className="relative w-50 border border-gray-500 rounded mr-4 flex-none">
+    <div key={props.key} className="relative w-50 border border-gray-500 rounded flex-none">
       {image && <Image width={200} height={232} src={image} />}
       <div className="px-2 py-2" >
         <p className="tracking-wider mb-2" >{description}</p>
         <div className="flex mb-4">
-          {starsElements()}
+          {starsElements(stars)}
           <p className="text-terciary-p-color" >(20)</p>
         </div>
         { props.offerPrice ? 

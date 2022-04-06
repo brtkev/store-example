@@ -1,12 +1,20 @@
+import Button from "components/buttons/button"
 import Footer from "components/footer"
 
 import Navegation from "components/navegation"
+import ProductCard, { ProductCardProps } from "components/productCard"
 import Head from "next/head"
 import Image from "next/image"
 import { useState } from "react"
 
 
 export default function ItemList(){
+  const items = Array<ProductCardProps>(12).fill({
+    description: "Toaster - Lampara De Escritorio De Madera Concept Tic - Tac",
+    image: require('public/home/product.png'),
+    stars: 4,
+    price: "49.00"
+  })
   return(
     <div  className="flex min-h-screen flex-col overflow-hidden w-full">
       <Head>
@@ -17,6 +25,7 @@ export default function ItemList(){
       <Header />
       <Filter />
       <FilterTags tags={['Ubicacion 1', '$50.00-$100.00']} />
+      <List items={items} />
       <Footer />
     </div>
   )
@@ -58,7 +67,7 @@ const FilterTags = (props: {
           const close = () => setClose(true);
           if(isClose) return null;
           return(
-            <div className="mb-4 bg-gray-300 rounded-lg h-11 px-3 flex items-center mr-4 min-w-max" >
+            <div key={i} className="mb-4 bg-gray-300 rounded-lg h-11 px-3 flex items-center mr-4 min-w-max" >
               <p className="text-sm text-p-color mr-1" >{tagText}</p>
               <Image className="cursor-pointer" onClick={close} src={require('public/icons/x.png')} width={16} height={16} />
             </div>
@@ -71,6 +80,38 @@ const FilterTags = (props: {
   return null;
 }
 
-const List = () => {
+const List = (props: {
+  items?: Array<ProductCardProps>
+}) => {
+  if(!Array.isArray(props.items)) return null;
+  return(
+    <div className="px-4 pb-30 flex flex-col items-center">
+      <p className="text-terciary-p-color text-xs mb-8 self-start" >{props.items.length} productos</p>
+      <div className="flex flex-wrap justify-center w-full mb-10">
+        {props.items.map( (productProps, i) => {
+          return(
+            <div key={i} className="mx-2 mb-4" >
+              <ProductCard  {...productProps} />
+            </div>
+          )
+        })}
+      </div>
+      <div className="max-w-max">
+        <p className="text-p-color text-xs text-center mb-4" >Has visto 12 de 48 productos</p>
+        <ProgressBar className="mb-6" />
+        <Button className="w-full" ><p className="text-white text-semibold text-sm" >Cargar mas</p></Button>
+      </div>
   
+    </div>
+  )
+}
+
+const ProgressBar = (props : {
+  className?: string
+}) => {
+  return(
+    <div  className={"w-full rounded-lg h-2 bg-gray-400 overflow-hidden " + props.className}>
+      <div className="w-1/4 h-full bg-primary" ></div>
+    </div>
+  )
 }

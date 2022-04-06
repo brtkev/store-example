@@ -22,6 +22,7 @@ module.exports = {
       'background' : '#F0F0F0',
       'white' : '#fff',
       'gray': {
+        '300' : '#F4F4F4',
         '400' : '#B8B8B8',
         '500' : '#0000004d'
       },
