@@ -99,16 +99,16 @@ const Card = () => {
         imageSrc={require('public/producto-individual/producto-1.png')} />
       <div className='hidden lg:grid grid-cols-3 grid-rows-2 gap-4 flex-1 mr-4' >
         <div className='relative col-start-1 col-end-4 row-start-1 row-end-2 ' >
-          <Image src={require('public/producto-individual/producto-1.png')} objectFit="fill" layout="fill" width={632} height={424} />
+          <Image src={require('public/producto-individual/producto-1.png')} objectFit="fill" layout="fill"  />
         </div>
         <div className='relative col-start-1 col-end-2 row-start-2 row-end-3 h-32 ' >
-          <Image src={require('public/producto-individual/producto-2.png')} objectFit="fill" layout="fill" width={200} height={128} />
+          <Image src={require('public/producto-individual/producto-2.png')} objectFit="fill" layout="fill"  />
         </div>
         <div className='relative col-start-2 col-end-3 row-start-2 row-end-3 h-32 ' >
-          <Image src={require('public/producto-individual/producto-3.png')} objectFit="fill" layout="fill" width={200} height={128} />
+          <Image src={require('public/producto-individual/producto-3.png')} objectFit="fill" layout="fill"  />
         </div>
         <div className='relative col-start-3 col-end-4 row-start-2 row-end-3 h-32 ' >
-          <Image src={require('public/producto-individual/producto-4.png')} objectFit="fill" layout="fill" width={200} height={128} />
+          <Image src={require('public/producto-individual/producto-4.png')} objectFit="fill" layout="fill"  />
         </div>
       </div>
       <div className='flex-1'>
