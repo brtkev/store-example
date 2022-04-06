@@ -5,7 +5,7 @@ import Navegation from "components/navegation"
 import ProductCard, { ProductCardProps } from "components/productCard"
 import Head from "next/head"
 import Image from "next/image"
-import { useState } from "react"
+import { MouseEventHandler, useEffect, useState } from "react"
 
 
 export default function ItemList(){
@@ -15,17 +15,25 @@ export default function ItemList(){
     stars: 4,
     price: "49.00"
   })
+
+  const [sortScreen, setSortScreen] = useState(true);
+  const toggleSortScreen : MouseEventHandler<HTMLDivElement> = (ev) => {
+    if(ev.currentTarget === ev.target){
+      setSortScreen(prev => !prev);
+    }
+  }
   return(
-    <div  className="flex min-h-screen flex-col overflow-hidden w-full">
+    <div  className="relative flex min-h-screen flex-col overflow-hidden w-full">
       <Head>
         <title>AliOlam</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navegation />
       <Header />
-      <Filter />
+      <Filter sortHandler={toggleSortScreen} />
       <FilterTags tags={['Ubicacion 1', '$50.00-$100.00']} />
       <List items={items} />
+      {sortScreen && <SortScreen closeHandler={toggleSortScreen} />}
       <Footer />
     </div>
   )
@@ -41,10 +49,12 @@ const Header = () => {
   )
 }
 
-const Filter = () => {
+const Filter = (props : {
+  sortHandler?: MouseEventHandler<HTMLDivElement>
+}) => {
   return(
     <div className="w-full flex border-b border-gray-400 mb-6">
-      <div className="flex-1 border-r border-gray-400 flex flex-col items-center py-1 cursor-pointer">
+      <div onClick={props.sortHandler} className="flex-1 border-r border-gray-400 flex flex-col items-center py-1 cursor-pointer">
         <Image className="mb-1" src={require('public/icons/switch-vertical-black.png')} width={24} height={24} />
         <p className="text-title-color text-semibold text-sm" >Ordenar</p>
       </div>
@@ -112,6 +122,35 @@ const ProgressBar = (props : {
   return(
     <div  className={"w-full rounded-lg h-2 bg-gray-400 overflow-hidden " + props.className}>
       <div className="w-1/4 h-full bg-primary" ></div>
+    </div>
+  )
+}
+
+const SortScreen = (props:{
+  closeHandler? : MouseEventHandler<HTMLDivElement>
+}) => {
+  const [currentOption, setCurrentOption] = useState(0)
+  const sortEffects = ['Orden por defecto', 'Menor precio', 'Mayor precio'];
+  const sortOptions = sortEffects.map((text, i) => {
+    const [active, setActive] = useState(false);
+    const setOption = () => setCurrentOption(i);
+    useEffect(() => {if(i === currentOption) setActive(true); else setActive(false)}, [currentOption])
+    return(
+      <div onClick={setOption} key={i} className="hover:bg-gray-300 cursor-pointer h-12 w-full px-3 flex justify-between items-center border-b border-gray-400">
+        <p>{text}</p>
+        {active ?
+         <div  className="h-4 w-4 rounded-full bg-white border-4 border-secondary"></div>:
+        <div  className="h-4 w-4 rounded-full bg-white border border-black"></div> }
+      </div>
+    )
+  })
+
+  
+  return(
+    <div onClick={props.closeHandler} className="fixed z-10 h-screen w-screen bg-[#0006] flex items-center pl-4 pr-8" >
+      <div className="w-full h-36 border-b border-gray-400 bg-white">
+        {sortOptions}
+      </div>
     </div>
   )
 }
