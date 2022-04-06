@@ -7,6 +7,7 @@ import CardImgColumns from '../components/cards/cardImgColumns';
 import cardTwoTextColumns from '../components/cards/cardTwoTextColumns';
 import CardTwoTextColumns from '../components/cards/cardTwoTextColumns';
 import CardValues from 'components/cards/cardValues';
+import Footer from 'components/footer';
 
 const Home: NextPage = () => {
   return (
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
-
+      <Navegation />
       <Hero />
       <CardImgColumns
         id={'1'}
@@ -55,7 +56,7 @@ const Home: NextPage = () => {
       <CardValues
         id={1}
         title={'Nuestros Valores'} />
-
+      <Footer />
     </div>
   );
 };
