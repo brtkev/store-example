@@ -23,7 +23,7 @@ export default function ItemList(){
   const [filterScreen, setFilterScreen] = useState(false);
   const toggleFilterScreen = () => setFilterScreen(prev => !prev)
   return(
-    <div  className="relative flex min-h-screen flex-col overflow-hidden w-full">
+    <div  className="relative flex min-h-screen flex-col items-center overflow-hidden w-full">
       <Head>
         <title>AliOlam</title>
         <link rel="icon" href="/favicon.ico" />
@@ -31,7 +31,7 @@ export default function ItemList(){
       <Navegation />
       <Header />
       <FilterButtons sortHandler={toggleSortScreen} filterHandler={toggleFilterScreen} />
-      <div className="w-full flex lg:px-20">
+      <div className="w-full flex lg:px-20 lg:py-12 max-w-[1400px]">
         <div className="w-77 hidden lg:flex lg:flex-col mr-4">
           <Filter />
         </div>
@@ -82,6 +82,7 @@ const FilterTags = (props: {
   if(Array.isArray(props.tags)){
     return(
       <div  className="px-4 flex flex-wrap">
+        <p className="hidden lg:flex items-center h-11 mr-4 text-bold hover:underline cursor-pointer" >Limpiar filtros</p>
         {props.tags?.map( (tagText : string, i) => {
           const [isClose, setClose] = useState(false)
           const close = () => setClose(true);
@@ -105,9 +106,9 @@ const List = (props: {
 }) => {
   if(!Array.isArray(props.items)) return null;
   return(
-    <div className="px-4 pb-30 flex flex-col items-center">
-      <p className="text-terciary-p-color text-xs mb-8 self-start" >{props.items.length} productos</p>
-      <div className="flex flex-wrap justify-center w-full mb-10">
+    <div className="px-4 lg:px-0 pb-30 flex flex-col items-center">
+      <p className="lg:hidden text-terciary-p-color text-xs mb-8 self-start" >{props.items.length} productos</p>
+      <div className="flex flex-wrap justify-center lg:justify-start w-full">
         {props.items.map( (productProps, i) => {
           return(
             <div key={i} className="mx-2 mb-4" >
@@ -116,7 +117,7 @@ const List = (props: {
           )
         })}
       </div>
-      <div className="max-w-max">
+      <div className="max-w-max mt-10">
         <p className="text-p-color text-xs text-center mb-4" >Has visto 12 de 48 productos</p>
         <ProgressBar className="mb-6" />
         <Button className="w-full" ><p className="text-white text-semibold text-sm" >Cargar mas</p></Button>
@@ -247,19 +248,51 @@ const FilterScreen = (props : {
 const DesktopSort = () => {
 
   return(
-    <div className="w-full lg:flex hidden border-b pb-5 border-gray-200">
+    <div className="w-full lg:flex items-center justify-between hidden border-b pb-5 border-gray-200 mb-4">
       <div className="text-xs text-p-color">(Mostrando 1-12 productos de 48 productos)</div>
-      <div className="flex">
-        <p className="text-bold text-sm text-title-color">Mostrar:</p>
-        <div className="border border-gray-200 rounded-lg p-2 flex items-center">
-          <p className="text-sm text-p-color">12</p>
-          <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />
-        </div>
-        <div className="border border-gray-200 rounded-lg p-2 flex items-center">
-          <p className="text-sm text-p-color">Orden por defecto</p>
-          <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />
-        </div>
+      <div className="flex items-center">
+        <p className="text-bold text-sm text-title-color mr-2">Mostrar:</p>
+        <SelectDropdown items={['12', '24', '36', '48']} className="mr-7" />
+        <SelectDropdown items={['Orden por defecto', 'mayor precio', 'menor precio']} />
       </div>
+    </div>
+  )
+}
+
+const SelectDropdown = (props : {
+  items?: Array<string>,
+  className?: string,
+}) => {
+  if(!props.items) return null
+
+  const [activeDropdown, setActiveDropdown] = useState(false);
+  const toggleActiveDropdown = () => setActiveDropdown(prev => !prev)
+  const [currentOption, setCurrentOption] = useState(0)
+  
+  const children = props.items?.map((text, value) =>{
+    const setAsCurrentOption = () => {
+      setCurrentOption(value);
+      toggleActiveDropdown();
+    };
+    const className = `w-full p-2 flex items-center justify-center cursor-pointer
+    ${value === 0 ? "" : "border-t border-gray-200"}`
+    return(
+      <div onClick={setAsCurrentOption} className={className}>
+        <p className="text-sm text-p-color mr-1">{text}</p>  
+      </div>
+    )
+  })
+
+
+  return(
+    <div className={`z-40 relative ${props.className}`}>
+      <div onClick={toggleActiveDropdown} className="cursor-pointer border border-gray-200 rounded-lg p-2 flex items-center">
+        <p className="text-sm text-p-color mr-1">{props.items[currentOption]}</p>
+        <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />
+      </div>
+      {activeDropdown && <div className="z-40 absolute border border-gray-200 rounded-lg flex flex-col items-center min-w-full bg-white">
+        {children}
+      </div>}
     </div>
   )
 }

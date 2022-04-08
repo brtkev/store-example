@@ -21,7 +21,7 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
   
   if(big){
     return(
-      <div key={props.key} className="relative w-77 border border-gray-500 rounded flex-none">
+      <div key={props.key} className="relative w-77 border border-gray-500 rounded flex-none z-0">
         {image && <Image width={308} height={232} src={image} />}
         <div className="px-2 py-2" >
           <p className="tracking-wider mb-2" >{description}</p>
@@ -35,7 +35,7 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
             <span className="text-terciary-p-color" > desde </span>
             <span className="text-secondary" >${props.offerPrice}</span></p> : <p className="text-semibold" >{price}</p>}
         </div>
-        <div className='absolute z-20 top-0 right-0  flex' >
+        <div className='absolute z-10 top-0 right-0  flex' >
           {props.offerTag && <div className='bg-primary py-1 px-2 rounded-lg text-white' >nuevo</div>}
           {props.newTag && <div className='bg-secondary py-1 px-2 rounded-lg text-white ml-1' >rebaja</div>}
         </div>
@@ -43,7 +43,7 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
     )
   }
   return(
-    <div key={props.key} className="relative w-50 border border-gray-500 rounded flex-none">
+    <div key={props.key} className="relative w-50 border border-gray-500 rounded flex-none z-0">
       {image && <Image width={200} height={232} src={image} />}
       <div className="px-2 py-2" >
         <p className="tracking-wider mb-2" >{description}</p>
@@ -57,7 +57,7 @@ const ProductCard = ( {big, image, description, stars = 0, price, ...props} : Pr
             <span className="text-terciary-p-color" > desde </span>
             <span className="text-secondary" >${props.offerPrice}</span></p> : <p className="text-semibold" >{price}</p>}
       </div>
-      <div className='absolute z-20 top-0 right-0  flex' >
+      <div className='absolute z-10 top-0 right-0  flex' >
         {props.offerTag && <div className='bg-primary py-1 px-2 rounded-lg text-white' >nuevo</div>}
         {props.newTag && <div className='bg-secondary py-1 px-2 rounded-lg text-white ml-1' >rebaja</div>}
       </div>

@@ -17,7 +17,7 @@ const tableData = [
 
 export default function Footer(){
   return(
-    <div className=" bg-primary" >
+    <div className="w-full bg-primary" >
       <Subscribe />
       <div className="lg:px-20 px-4 py-14 w-full flex lg:flex-row flex-col lg:justify-between items-center" >
         <div className="relative lg:w-77 w-max mb-7 flex flex-col" >
