@@ -75,8 +75,12 @@ interface CarrousellProps extends React.HTMLAttributes<HTMLDivElement>{
 const products = () => {
   const products = [];
   for(let i = 0; i < 10; i++){
-    products.push(<ProductCard key={i} image={require('public/home/product.png')} 
-    description="Blusa Con Puño Recogido" stars={4} price="$49.00"  />)
+    products.push(
+      <div className='mr-4'>
+        <ProductCard key={i} image={require('public/home/product.png')} 
+    description="Blusa Con Puño Recogido" stars={4} price="$49.00"  />
+      </div>
+    )
   }
   return products;
 }

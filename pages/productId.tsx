@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Button from 'components/buttons/button'
 import { useState } from 'react'
 
-const Item: NextPage = () => {
+const ProductId: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">
       <Head>
@@ -44,7 +44,7 @@ const Item: NextPage = () => {
   )
 }
 
-export default Item;
+export default ProductId;
 
 const ItemInformationCard = (props :{
   information? : Array<{title : string, p : string[]}>
@@ -65,7 +65,10 @@ const ItemInformationCard = (props :{
             <div key={i} className={className}>
               <div className='cursor-pointer relative h-7 w-full px-8 flex items-center' onClick={toggleActive}>
                 <h3 className={titleClass } >{informationItem.title}</h3>
-                <div className='absolute right-8 flex justify-center' ><Image src={require('public/icons/pointer-down-black.png')} width={24} height={24} /></div>
+                <div className='absolute right-8 flex justify-center' >
+                  {isActive ? <Image src={require('public/icons/pointer-up-black.png')} width={24} height={24} />:
+                  <Image src={require('public/icons/pointer-down-black.png')} width={24} height={24} />}
+                </div>
               </div>
               {isActive && <p className='text-base text-p-color text-left' >{informationItem.p[0]}</p>}
             </div>
@@ -96,19 +99,19 @@ const Card = () => {
     <div className='lg:flex lg:py-20 max-w-[1400px] w-full' >
       <Slideshow 
         className='pt-8 pb-6 lg:hidden'
-        imageSrc={require('public/producto-individual/producto-1.png')} />
+        imageSrc={require('public/temp/producto-1.png')} />
       <div className='hidden lg:grid grid-cols-3 grid-rows-2 gap-4 flex-1 mr-4' >
         <div className='relative col-start-1 col-end-4 row-start-1 row-end-2 ' >
-          <Image src={require('public/producto-individual/producto-1.png')} objectFit="fill" layout="fill"  />
+          <Image src={require('public/temp/producto-1.png')} objectFit="fill" layout="fill"  />
         </div>
         <div className='relative col-start-1 col-end-2 row-start-2 row-end-3 h-32 ' >
-          <Image src={require('public/producto-individual/producto-2.png')} objectFit="fill" layout="fill"  />
+          <Image src={require('public/temp/producto-2.png')} objectFit="fill" layout="fill"  />
         </div>
         <div className='relative col-start-2 col-end-3 row-start-2 row-end-3 h-32 ' >
-          <Image src={require('public/producto-individual/producto-3.png')} objectFit="fill" layout="fill"  />
+          <Image src={require('public/temp/producto-3.png')} objectFit="fill" layout="fill"  />
         </div>
         <div className='relative col-start-3 col-end-4 row-start-2 row-end-3 h-32 ' >
-          <Image src={require('public/producto-individual/producto-4.png')} objectFit="fill" layout="fill"  />
+          <Image src={require('public/temp/producto-4.png')} objectFit="fill" layout="fill"  />
         </div>
       </div>
       <div className='flex-1'>
@@ -122,7 +125,7 @@ const Card = () => {
             </div>
             <p className='text-secondary text-3xl'>$49.00 USD</p>
           </div>
-          <Image src={require('public/producto-individual/velvetica.png')} width={82} height={72} />
+          <Image src={require('public/temp/velvetica.png')} width={82} height={72} />
         </div>
         <p className='text-terciary-p-color mb-8' >Himenaeos parturient nam a justo placerat lorem erat pretium a fusce pharetra pretium enim sagittis ut nunc neque torquent sem a leo. Dictumst himenaeos primis torquent ridiculus.</p>
         <div className='grid grid-cols-2 grid-rows-2' >

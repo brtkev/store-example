@@ -6,15 +6,15 @@ import ProductCard, { ProductCardProps } from "components/productCard"
 import Head from "next/head"
 import Image from "next/image"
 import { MouseEventHandler, useEffect, useState } from "react"
-// https://www.figma.com/file/SkNIiseakx6UzQI8PkZMNs/New-Aliolam?node-id=514%3A7592
+// https://www.figma.com/file/SkNIiseakx6UzQI8PkZMNs/New-Aliolam?node-id=510%3A2779
 
-export default function ItemList(){
-  const items = Array<ProductCardProps>(12).fill({
+export default function Products(){
+  const items = Array<JSX.Element>(12).fill(<ProductCard {...{
     description: "Toaster - Lampara De Escritorio De Madera Concept Tic - Tac",
     image: require('public/home/product.png'),
     stars: 4,
     price: "49.00"
-  })
+  }} />)
 
   const [sortScreen, setSortScreen] = useState(false);
   const toggleSortScreen = () => setSortScreen(prev => !prev);
@@ -29,7 +29,7 @@ export default function ItemList(){
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navegation />
-      <Header />
+      <Header title="Comprar" description="Inicio / Todos los productos" />
       <FilterButtons sortHandler={toggleSortScreen} filterHandler={toggleFilterScreen} />
       <div className="w-full flex lg:px-20 lg:py-12 max-w-[1400px]">
         <div className="w-77 hidden lg:flex lg:flex-col mr-4">
@@ -38,7 +38,8 @@ export default function ItemList(){
         <div className="flex-1">
         <DesktopSort />
         <FilterTags tags={['Ubicacion 1', '$50.00-$100.00']} />
-        <List items={items} />
+        <List items={items} 
+        justifyList="justify-center lg:justify-start" />
         </div>
       </div>
       {sortScreen && <SortScreen closeHandler={toggleSortScreen} />}
@@ -48,12 +49,15 @@ export default function ItemList(){
   )
 }
 
-const Header = () => {
+export const Header = (props : {
+  title: string,
+  description?: string,
+}) => {
 
   return(
     <div className="flex flex-col items-center w-full py-12 bg-[#C2F5FF]">
-      <h1 className="text-3xl text-title-color text-bold mb-6" >Comprar</h1>
-      <p>Inicio / Todos los productos</p>
+      <h1 className="text-3xl text-title-color text-bold mb-6" >{props.title}</h1>
+      <p>{props.description}</p>
     </div>
   )
 }
@@ -101,18 +105,20 @@ const FilterTags = (props: {
   return null;
 }
 
-const List = (props: {
-  items?: Array<ProductCardProps>
+export const List = (props: {
+  items?: Array<React.ReactNode>
+  lengthHidden?: boolean,
+  justifyList?: string,
 }) => {
   if(!Array.isArray(props.items)) return null;
   return(
     <div className="px-4 lg:px-0 pb-30 flex flex-col items-center">
-      <p className="lg:hidden text-terciary-p-color text-xs mb-8 self-start" >{props.items.length} productos</p>
-      <div className="flex flex-wrap justify-center lg:justify-start w-full">
-        {props.items.map( (productProps, i) => {
+      {!props.lengthHidden && <p className="lg:hidden text-terciary-p-color text-xs self-start" >{props.items.length} productos</p>}
+      <div className={"flex flex-wrap w-full mt-8 " + props.justifyList}>
+        {props.items.map( (item, i) => {
           return(
             <div key={i} className="mx-2 mb-4" >
-              <ProductCard  {...productProps} />
+              {item}
             </div>
           )
         })}
@@ -127,7 +133,7 @@ const List = (props: {
   )
 }
 
-const ProgressBar = (props : {
+export const ProgressBar = (props : {
   className?: string
 }) => {
   return(
@@ -200,7 +206,8 @@ const Filter = () => {
         <div onClick={toggleActive} className="cursor-pointer hover:bg-gray-300 relative h-12 px-4 flex items-center border-b border-gray-200">
           <p className="text-p-color text-semibold">{filter.title}</p>
           <div className="absolute right-4" >
-            <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />
+            {active ? <Image src={require('public/icons/pointer-up-black.png')} width={16} height={16} /> :
+              <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />}
           </div>
         </div>
         {active && 
@@ -268,7 +275,7 @@ const SelectDropdown = (props : {
   const [activeDropdown, setActiveDropdown] = useState(false);
   const toggleActiveDropdown = () => setActiveDropdown(prev => !prev)
   const [currentOption, setCurrentOption] = useState(0)
-  
+
   const children = props.items?.map((text, value) =>{
     const setAsCurrentOption = () => {
       setCurrentOption(value);
@@ -277,7 +284,7 @@ const SelectDropdown = (props : {
     const className = `w-full p-2 flex items-center justify-center cursor-pointer
     ${value === 0 ? "" : "border-t border-gray-200"}`
     return(
-      <div onClick={setAsCurrentOption} className={className}>
+      <div key={value} onClick={setAsCurrentOption} className={className}>
         <p className="text-sm text-p-color mr-1">{text}</p>  
       </div>
     )
@@ -288,7 +295,8 @@ const SelectDropdown = (props : {
     <div className={`z-40 relative ${props.className}`}>
       <div onClick={toggleActiveDropdown} className="cursor-pointer border border-gray-200 rounded-lg p-2 flex items-center">
         <p className="text-sm text-p-color mr-1">{props.items[currentOption]}</p>
-        <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />
+        {activeDropdown ? <Image src={require('public/icons/pointer-up-black.png')} width={16} height={16} /> :
+          <Image src={require('public/icons/pointer-down-black.png')} width={16} height={16} />}
       </div>
       {activeDropdown && <div className="z-40 absolute border border-gray-200 rounded-lg flex flex-col items-center min-w-full bg-white">
         {children}
