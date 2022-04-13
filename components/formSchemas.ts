@@ -1,3 +1,4 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 export const loginSchema = yup.object().shape({
@@ -30,3 +31,19 @@ export const registerSchema = yup.object().shape({
     .required('campo obligatorio'),
   subscription : yup.bool()
 })
+
+const checkoutSchema = yup.object().shape({
+  fullName : yup.string()
+    .required("ingresa tu nombre"),
+  address1: yup.string()
+    .required("ingresa tu direccion"),
+  address2: yup.string(),
+  zipCode : yup.number().max(9999).min(1000).required("ingresa el codigo postal"),
+  city: yup.string().required("ingresa una ciudad"),
+  state: yup.string().required("ingresa un estado/provincia"),
+  country: yup.string(),
+  phoneNumber : yup.number().required("ingresa tu numero de telefono"),
+  termsAndCondition : yup.bool()
+})
+
+export const checkoutResolver = () => yupResolver(checkoutSchema);
