@@ -13,9 +13,9 @@ export default function Stores(){
   const items = Array<JSX.Element>(12).fill(<StoreCard 
     {...{
       image: require('public/temp/store-image.jpg'),
-      address: "askndaldjsndka",
+      address: "845 N. Stonybrook Ave. Tonawanda, NY 14210, Denmark",
       logo: require('public/temp/storeIcon.png'),
-      phone: "askjdlkasjd",
+      phone: "(613) 343-9004",
       title: "VELVETICA",
       stars: 4
 
